@@ -295,4 +295,24 @@ namespace :data do
         )
       end
   end
+
+  desc 'Export cards in format for Cordova'
+  task :export_cards => :environment do
+    ans = ""
+    Card.all.each do |c|
+      ans += "{
+        id: #{c.game_id},
+        name: '#{c.name}',
+        points: #{c.points},
+        reagent1: '#{c.reagent1}',
+        reagent2: '#{c.reagent2}',
+        notes: '#{c.notes}',
+        image: '#{c.image_loc}',
+        icon: '#{c.icon}',
+        startHandNum: #{c.start_hand_num},
+        stockroomNum: #{c.stockroom_num}
+      },"
+    end
+    puts ans
+  end
 end
