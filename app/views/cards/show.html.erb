@@ -50,5 +50,15 @@
   <%= @card.stockroom_num %>
 </p>
 
+<p>
+  <strong>Image :</strong>
+  <%= image_tag @card.image_loc %>
+</p>
+
+<p>
+  <strong>Icon:</strong>
+  <%= image_tag @card.icon %>
+</p>
+
 <%= link_to 'Edit', edit_card_path(@card) %> |
 <%= link_to 'Back', cards_path %>
