@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Combo:</strong>
+  <%= @card_spot.combo %>
+</p>
+
+<p>
+  <strong>Card:</strong>
+  <%= @card_spot.card %>
+</p>
+
+<p>
+  <strong>Ord:</strong>
+  <%= @card_spot.ord %>
+</p>
+
+<%= link_to 'Edit', edit_card_spot_path(@card_spot) %> |
+<%= link_to 'Back', card_spots_path %>

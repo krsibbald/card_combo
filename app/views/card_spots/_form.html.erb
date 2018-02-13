@@ -1,0 +1,32 @@
+<%= form_with(model: card_spot, local: true) do |form| %>
+  <% if card_spot.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(card_spot.errors.count, "error") %> prohibited this card_spot from being saved:</h2>
+
+      <ul>
+      <% card_spot.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :combo_id %>
+    <%= form.text_field :combo_id, id: :card_spot_combo_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :card_id %>
+    <%= form.text_field :card_id, id: :card_spot_card_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :ord %>
+    <%= form.number_field :ord, id: :card_spot_ord %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180213023328) do
+ActiveRecord::Schema.define(version: 20180213024103) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "card_spots", force: :cascade do |t|
+    t.bigint "combo_id"
+    t.bigint "card_id"
+    t.integer "ord"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["card_id"], name: "index_card_spots_on_card_id"
+    t.index ["combo_id"], name: "index_card_spots_on_combo_id"
+  end
 
   create_table "cards", force: :cascade do |t|
     t.integer "game_id"
@@ -37,4 +47,6 @@ ActiveRecord::Schema.define(version: 20180213023328) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "card_spots", "cards"
+  add_foreign_key "card_spots", "combos"
 end

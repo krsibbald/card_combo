@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Card Spots</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Combo</th>
+      <th>Card</th>
+      <th>Ord</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @card_spots.each do |card_spot| %>
+      <tr>
+        <td><%= card_spot.combo %></td>
+        <td><%= card_spot.card %></td>
+        <td><%= card_spot.ord %></td>
+        <td><%= link_to 'Show', card_spot %></td>
+        <td><%= link_to 'Edit', edit_card_spot_path(card_spot) %></td>
+        <td><%= link_to 'Destroy', card_spot, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Card Spot', new_card_spot_path %>

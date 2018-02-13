@@ -1,0 +1,2 @@
+module CardSpotsHelper
+end
