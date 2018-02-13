@@ -1,0 +1,67 @@
+<%= form_with(model: card, local: true) do |form| %>
+  <% if card.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(card.errors.count, "error") %> prohibited this card from being saved:</h2>
+
+      <ul>
+      <% card.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :game_id %>
+    <%= form.number_field :game_id, id: :card_game_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :card_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :points %>
+    <%= form.number_field :points, id: :card_points %>
+  </div>
+
+  <div class="field">
+    <%= form.label :reagent1 %>
+    <%= form.text_field :reagent1, id: :card_reagent1 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :reagent2 %>
+    <%= form.text_field :reagent2, id: :card_reagent2 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :notes %>
+    <%= form.text_field :notes, id: :card_notes %>
+  </div>
+
+  <div class="field">
+    <%= form.label :image_loc %>
+    <%= form.text_field :image_loc, id: :card_image_loc %>
+  </div>
+
+  <div class="field">
+    <%= form.label :icon %>
+    <%= form.text_field :icon, id: :card_icon %>
+  </div>
+
+  <div class="field">
+    <%= form.label :start_hand_num %>
+    <%= form.number_field :start_hand_num, id: :card_start_hand_num %>
+  </div>
+
+  <div class="field">
+    <%= form.label :stockroom_num %>
+    <%= form.number_field :stockroom_num, id: :card_stockroom_num %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

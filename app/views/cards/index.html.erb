@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Cards</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Game Id</th>
+      <th>Name</th>
+      <th>Points</th>
+      <th>Reagent1</th>
+      <th>Reagent2</th>
+      <th>Notes</th>
+      <th>Image loc</th>
+      <th>Icon</th>
+      <th>Start hand num</th>
+      <th>Stockroom num</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @cards.each do |card| %>
+      <tr>
+        <td><%= card.game_id %></td>
+        <td><%= card.name %></td>
+        <td><%= card.points %></td>
+        <td><%= card.reagent1 %></td>
+        <td><%= card.reagent2 %></td>
+        <td><%= card.notes %></td>
+        <td><%= card.image_loc %></td>
+        <td><%= card.icon %></td>
+        <td><%= card.start_hand_num %></td>
+        <td><%= card.stockroom_num %></td>
+        <td><%= link_to 'Show', card %></td>
+        <td><%= link_to 'Edit', edit_card_path(card) %></td>
+        <td><%= link_to 'Destroy', card, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Card', new_card_path %>

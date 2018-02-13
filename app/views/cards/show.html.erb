@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Game:</strong>
+  <%= @card.game_id %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @card.name %>
+</p>
+
+<p>
+  <strong>Points:</strong>
+  <%= @card.points %>
+</p>
+
+<p>
+  <strong>Reagent1:</strong>
+  <%= @card.reagent1 %>
+</p>
+
+<p>
+  <strong>Reagent2:</strong>
+  <%= @card.reagent2 %>
+</p>
+
+<p>
+  <strong>Notes:</strong>
+  <%= @card.notes %>
+</p>
+
+<p>
+  <strong>Image loc:</strong>
+  <%= @card.image_loc %>
+</p>
+
+<p>
+  <strong>Icon:</strong>
+  <%= @card.icon %>
+</p>
+
+<p>
+  <strong>Start hand num:</strong>
+  <%= @card.start_hand_num %>
+</p>
+
+<p>
+  <strong>Stockroom num:</strong>
+  <%= @card.stockroom_num %>
+</p>
+
+<%= link_to 'Edit', edit_card_path(@card) %> |
+<%= link_to 'Back', cards_path %>
