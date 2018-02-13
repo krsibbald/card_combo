@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Cards</h1>
-
+<%= paginate @cards %>
 <table>
   <thead>
     <tr>
@@ -39,6 +39,7 @@
     <% end %>
   </tbody>
 </table>
+<%= paginate @cards %>
 
 <br>
 

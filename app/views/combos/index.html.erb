@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Combos</h1>
-
+<%= paginate @combos %>
 <table>
   <thead>
     <tr>
@@ -23,7 +23,7 @@
     <% end %>
   </tbody>
 </table>
-
+<%= paginate @combos %>
 <br>
 
 <%= link_to 'New Combo', new_combo_path %>

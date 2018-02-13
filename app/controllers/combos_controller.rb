@@ -4,7 +4,8 @@ class CombosController < ApplicationController
   # GET /combos
   # GET /combos.json
   def index
-    @combos = Combo.all
+    page = params[:page] || 1
+    @combos = Combo.order(:id).page page
   end
 
   # GET /combos/1

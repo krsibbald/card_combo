@@ -4,7 +4,8 @@ class CardsController < ApplicationController
   # GET /cards
   # GET /cards.json
   def index
-    @cards = Card.all
+    page = params[:page] || 1
+    @cards = Card.order(:game_id).page page
   end
 
   # GET /cards/1
