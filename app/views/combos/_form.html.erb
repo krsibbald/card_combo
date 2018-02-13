@@ -1,0 +1,27 @@
+<%= form_with(model: combo, local: true) do |form| %>
+  <% if combo.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(combo.errors.count, "error") %> prohibited this combo from being saved:</h2>
+
+      <ul>
+      <% combo.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :outcome %>
+    <%= form.check_box :outcome, id: :combo_outcome %>
+  </div>
+
+  <div class="field">
+    <%= form.label :card_spots_count %>
+    <%= form.number_field :card_spots_count, id: :combo_card_spots_count %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

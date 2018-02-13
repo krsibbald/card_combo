@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180212040528) do
+ActiveRecord::Schema.define(version: 20180213023328) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,13 @@ ActiveRecord::Schema.define(version: 20180212040528) do
     t.string "icon"
     t.integer "start_hand_num"
     t.integer "stockroom_num"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "combos", force: :cascade do |t|
+    t.boolean "outcome"
+    t.integer "card_spots_count", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
