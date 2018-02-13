@@ -315,4 +315,125 @@ namespace :data do
     end
     puts ans
   end
+
+  desc 'Create every possible combination'
+  task :create_all_combos => :environment do
+    puts "********* 1 card combinations"
+    #1 card combo
+    Card.all.each do |c|
+      combo = Combo.create(outcome: true)
+      CardSpot.create(combo: combo, ord: 1, card: c)
+    end
+
+    puts "********* 2 card combinations"
+    #2 card combo
+    Card.all.each do |c1|
+      Card.all.each do |c2|
+        if c1 == c2 && (c1.start_hand_num + c1.stockroom_num < 2)
+        else
+          print '.'
+          combo = Combo.create(outcome: nil)
+          CardSpot.create(combo: combo, ord: 1, card: c1)
+          CardSpot.create(combo: combo, ord: 2, card: c2)
+        end
+      end
+    end
+
+    puts "********* 3 card combinations"
+    #3 card combo
+    Card.all.each do |c1|
+      Card.all.each do |c2|
+        Card.all.each do |c3|
+          if c1 == c2 && c2 == c3 && (c1.start_hand_num + c1.stockroom_num < 3)
+          elsif c1 == c2 && (c1.start_hand_num + c1.stockroom_num < 2)
+          elsif c1 == c3 && (c1.start_hand_num + c1.stockroom_num < 2)
+          elsif c2 == c3 && (c2.start_hand_num + c2.stockroom_num < 2)
+          else
+            print '.'
+            combo = Combo.create(outcome: nil)
+            CardSpot.create(combo: combo, ord: 1, card: c1)
+            CardSpot.create(combo: combo, ord: 2, card: c2)
+            CardSpot.create(combo: combo, ord: 3, card: c3)
+          end
+        end
+      end
+    end
+
+    puts "********* 4 card combinations"
+    #4 card combo
+    Card.all.each do |c1|
+      Card.all.each do |c2|
+        Card.all.each do |c3|
+          Card.all.each do |c4|
+            if c1 == c2 && c2 == c3 && c3 == c4 && (c1.start_hand_num + c1.stockroom_num < 4)
+            elsif c1 == c2 && c2 == c3 && (c1.start_hand_num + c1.stockroom_num < 3)
+            elsif c2 == c3 && c3 == c4 && (c2.start_hand_num + c2.stockroom_num < 3)
+            elsif c3 == c4 && c4 == c1 && (c1.start_hand_num + c1.stockroom_num < 3)
+            elsif c4 == c1 && c1 == c2 && (c1.start_hand_num + c1.stockroom_num < 3)
+            
+            elsif c1 == c2 && (c1.start_hand_num + c1.stockroom_num < 2)
+            elsif c1 == c3 && (c1.start_hand_num + c1.stockroom_num < 2)
+            elsif c1 == c4 && (c1.start_hand_num + c1.stockroom_num < 2)
+            elsif c2 == c3 && (c2.start_hand_num + c2.stockroom_num < 2)
+            elsif c2 == c4 && (c2.start_hand_num + c2.stockroom_num < 2)
+            elsif c3 == c4 && (c3.start_hand_num + c3.stockroom_num < 2)
+            else
+              combo = Combo.create(outcome: nil)
+              print '.'
+              CardSpot.create(combo: combo, ord: 1, card: c1)
+              CardSpot.create(combo: combo, ord: 2, card: c2)
+              CardSpot.create(combo: combo, ord: 3, card: c3)
+              CardSpot.create(combo: combo, ord: 4, card: c4)
+            end
+          end
+        end
+      end
+    end
+
+    puts "********* 5 card combinations"
+    #5 card combo
+    Card.all.each do |c1|
+      Card.all.each do |c2|
+        Card.all.each do |c3|
+          Card.all.each do |c4|
+            Card.all.each do |c5|
+              if c1 == c2 && c2 == c3 && c3 == c4 && c4 == c5 && (c1.start_hand_num + c1.stockroom_num < 5)
+              elsif c2 == c3 && c3 == c4 && c4 == c5 && (c2.start_hand_num + c2.stockroom_num < 4)
+              elsif c1 == c2 && c2 == c3 && c3 == c4 && (c1.start_hand_num + c1.stockroom_num < 4)
+              elsif c1 == c2 && c2 == c3 && c3 == c5 && (c1.start_hand_num + c1.stockroom_num < 4)
+              elsif c1 == c2 && c2 == c4 && c4 == c5 && (c1.start_hand_num + c1.stockroom_num < 4)
+              elsif c1 == c3 && c3 == c4 && c4 == c5 && (c1.start_hand_num + c1.stockroom_num < 4)
+
+              elsif c1 == c2 && c2 == c3 && (c1.start_hand_num + c1.stockroom_num < 3)
+              elsif c1 == c2 && c2 == c4 && (c1.start_hand_num + c1.stockroom_num < 3)
+              elsif c1 == c2 && c2 == c5 && (c1.start_hand_num + c1.stockroom_num < 3)
+              elsif c1 == c3 && c3 == c4 && (c1.start_hand_num + c1.stockroom_num < 3)
+              elsif c1 == c3 && c3 == c5 && (c1.start_hand_num + c1.stockroom_num < 3)
+              elsif c2 == c3 && c3 == c4 && (c2.start_hand_num + c2.stockroom_num < 3)
+              elsif c2 == c3 && c3 == c5 && (c2.start_hand_num + c2.stockroom_num < 3)
+              elsif c2 == c4 && c4 == c5 && (c2.start_hand_num + c2.stockroom_num < 3)
+              elsif c3 == c4 && c4 == c5 && (c1.start_hand_num + c1.stockroom_num < 3)
+              
+              elsif c1 == c2 && (c1.start_hand_num + c1.stockroom_num < 2)
+              elsif c1 == c3 && (c1.start_hand_num + c1.stockroom_num < 2)
+              elsif c1 == c4 && (c1.start_hand_num + c1.stockroom_num < 2)
+              elsif c2 == c3 && (c2.start_hand_num + c2.stockroom_num < 2)
+              elsif c2 == c4 && (c2.start_hand_num + c2.stockroom_num < 2)
+              elsif c3 == c4 && (c3.start_hand_num + c3.stockroom_num < 2)
+              else
+                print '.'
+                combo = Combo.create(outcome: nil)
+                CardSpot.create(combo: combo, ord: 1, card: c1)
+                CardSpot.create(combo: combo, ord: 2, card: c2)
+                CardSpot.create(combo: combo, ord: 3, card: c3)
+                CardSpot.create(combo: combo, ord: 4, card: c4)
+                CardSpot.create(combo: combo, ord: 5, card: c5)
+              end
+            end
+          end
+        end
+      end
+    end
+
+  end
 end
