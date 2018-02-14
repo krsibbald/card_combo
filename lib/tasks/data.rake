@@ -436,4 +436,74 @@ namespace :data do
     end
 
   end
+
+  desc 'import combos'
+  task :import_combos => :environment do
+    #var CARDCOMBOS = {
+    #0 is last item in hand
+    combos_string = "{
+      1: { 3: { 0: true, 3: { 1: { 0: true } } } },
+      2: { 3: { 0: true } },
+      3: { 1: { 0: true, 3: { 1: { 0: true } } },
+           2: { 0: true } }
+    }"
+    #removes all white space, puts quotes before and after numbers
+    json_combos = combos_string.squish.delete(' ').gsub(/(\d+)/, '"\\1"')
+    combos_hash = JSON.parse json_combos
+
+    combos_hash.keys.each do |k1|
+      card1 = Card.find_by_game_id(k1)
+      combos_hash[k1].keys.each do |k2|
+        if k2 == '0'
+          combo = Combo.create(outcome: true)
+          CardSpot.create(combo: combo, card: card1, ord: 1)
+        else
+          card2 = Card.find_by_game_id(k2)
+          combos_hash[k1][k2].keys.each do |k3|
+            if k3 == '0'
+              combo = Combo.create(outcome: true)
+              CardSpot.create(combo: combo, card: card1, ord: 1)
+              CardSpot.create(combo: combo, card: card2, ord: 2)
+            else
+              card3 = Card.find_by_game_id(k3)
+              combos_hash[k1][k2][k3].keys.each do |k4|
+                if k4 == '0'
+                  combo = Combo.create(outcome: true)
+                  CardSpot.create(combo: combo, card: card1, ord: 1)
+                  CardSpot.create(combo: combo, card: card2, ord: 2)
+                  CardSpot.create(combo: combo, card: card3, ord: 3)
+                else
+                  card4 = Card.find_by_game_id(k4)
+                  combos_hash[k1][k2][k3][k4].keys.each do |k5|
+                    if k5 == '0'
+                      combo = Combo.create(outcome: true)
+                      CardSpot.create(combo: combo, card: card1, ord: 1)
+                      CardSpot.create(combo: combo, card: card2, ord: 2)
+                      CardSpot.create(combo: combo, card: card3, ord: 3)
+                      CardSpot.create(combo: combo, card: card4, ord: 4)
+                    else
+                      card5 = Card.find_by_game_id(k5)
+                      combos_hash[k1][k2][k3][k4][k5].keys.each do |k6|
+                        if k5 == '0'
+                          combo = Combo.create(outcome: true)
+                          CardSpot.create(combo: combo, card: card1, ord: 1)
+                          CardSpot.create(combo: combo, card: card2, ord: 2)
+                          CardSpot.create(combo: combo, card: card3, ord: 3)
+                          CardSpot.create(combo: combo, card: card4, ord: 4)
+                          CardSpot.create(combo: combo, card: card5, ord: 5)
+                        else
+                          puts "bad section of hash #{k1}:#{k2}:#{k3}:#{k4}:#{k5}"
+                        end
+                      end
+                    end
+                  end
+                end
+              end
+            end
+          end
+        end
+      end
+    end
+
+  end
 end
