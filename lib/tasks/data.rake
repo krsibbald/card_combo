@@ -447,7 +447,7 @@ namespace :data do
       3: { 1: { 0: true, 3: { 1: { 0: true } } },
            2: { 0: true } }
     }"
-    import_combos_from_cordova(combos_string)
+    Combo.import_from_cordova(combos_string)
   end
   desc 'export combos'
   task :export_combos => :environment do
