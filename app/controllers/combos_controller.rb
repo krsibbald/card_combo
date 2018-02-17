@@ -53,7 +53,7 @@ class CombosController < ApplicationController
 
     respond_to do |format|
       if @combo.save
-        format.html { redirect_to @combo, notice: 'Combo was successfully created.' }
+        format.html {redirect_to new_combo_path, notice: 'Combo was successfully created.'}
         format.json { render :show, status: :created, location: @combo }
       else
         format.html { render :new }
