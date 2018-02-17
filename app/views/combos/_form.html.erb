@@ -10,7 +10,7 @@
       </ul>
     </div>
   <% end %>
-
+<!-- 
   <div class="field">
     <%= form.label :outcome %>
     <%= form.check_box :outcome, id: :combo_outcome %>
@@ -19,7 +19,37 @@
   <div class="field">
     <%= form.label :card_spots_count %>
     <%= form.number_field :card_spots_count, id: :combo_card_spots_count %>
-  </div>
+  </div> -->
+  <table>
+    <tr>
+      <td>
+        <div class="field">
+          <%=form.label :card1%>
+          <%=form.select :card1, options_from_collection_for_select(Card.order(:game_id).all, 'id', 'name'), {:include_blank => true}, { :multiple => true, :size => 26 } %>
+        </div>
+      </td><td>
+        <div class="field">
+          <%=form.label :card2%>
+          <%=form.select :card2, options_from_collection_for_select(Card.order(:game_id).all, 'id', 'name'), {:include_blank => true}, { :multiple => true, :size => 26 } %>
+        </div>
+      </td><td>
+        <div class="field">
+          <%=form.label :card3%>
+          <%=form.select :card3, options_from_collection_for_select(Card.order(:game_id).all, 'id', 'name'), {:include_blank => true}, { :multiple => true, :size => 26 } %>
+        </div>
+      </td><td>
+        <div class="field">
+          <%=form.label :card4%>
+          <%=form.select :card4, options_from_collection_for_select(Card.order(:game_id).all, 'id', 'name'), {:include_blank => true}, { :multiple => true, :size => 26 } %>
+        </div>
+      </td><td>
+        <div class="field">
+          <%=form.label :card5%>
+          <%=form.select :card5, options_from_collection_for_select(Card.order(:game_id).all, 'id', 'name'), {:include_blank => true}, { :multiple => true, :size => 26 } %>
+        </div>
+      </td>
+    </tr>
+  </table>
 
   <div class="actions">
     <%= form.submit %>
