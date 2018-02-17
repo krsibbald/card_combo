@@ -25,7 +25,31 @@ class CombosController < ApplicationController
   # POST /combos
   # POST /combos.json
   def create
-    @combo = Combo.new(combo_params)
+    @combo = Combo.create(outcome: true)
+    card1_id = combo_params[:card1].try(:[], 1)
+    if card1_id
+      @combo.card_spots.create(card_id: card1_id, ord: 1)
+    end
+
+    card2_id = combo_params[:card2].try(:[], 1)
+    if card2_id
+      @combo.card_spots.create(card_id: card2_id, ord: 2)
+    end
+
+    card3_id = combo_params[:card3].try(:[], 1)
+    if card3_id
+      @combo.card_spots.create(card_id: card3_id, ord: 3)
+    end
+
+    card4_id = combo_params[:card4].try(:[], 1)
+    if card4_id
+      @combo.card_spots.create(card_id: card4_id, ord: 4)
+    end
+
+    card5_id = combo_params[:card5].try(:[], 1)
+    if card5_id
+      @combo.card_spots.create(card_id: card5_id, ord: 5)
+    end
 
     respond_to do |format|
       if @combo.save
@@ -70,6 +94,6 @@ class CombosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def combo_params
-      params.require(:combo).permit(:outcome, :card_spots_count)
+      params.require(:combo).permit(:outcome, :card_spots_count, card1: [], card2: [], card3: [], card4: [], card5:[])
     end
 end

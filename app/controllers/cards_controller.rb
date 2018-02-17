@@ -70,6 +70,6 @@ class CardsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def card_params
-      params.require(:card).permit(:rails, :generate, :scaffold, :Card, :game_id, :name, :points, :reagent1, :reagent2, :notes, :image_loc, :icon, :start_hand_num, :stockroom_num)
+      params.require(:card).permit(:game_id, :name, :points, :reagent1, :reagent2, :notes, :image_loc, :icon, :start_hand_num, :stockroom_num)
     end
 end
