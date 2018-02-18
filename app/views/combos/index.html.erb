@@ -2,11 +2,16 @@
 
 <h1>Combos</h1>
 <%= paginate @combos %>
-<table>
+<table class='table table-striped table-bordered'>
   <thead>
     <tr>
       <th>Outcome</th>
       <th>Card spots count</th>
+      <th>Card 1</th>
+      <th>Card 2</th>
+      <th>Card 3</th>
+      <th>Card 4</th>
+      <th>Card 5</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,6 +21,11 @@
       <tr>
         <td><%= combo.outcome %></td>
         <td><%= combo.card_spots_count %></td>
+        <td><%=combo.card_spots.find_by(ord: 1).try(:card).try(:name) %></td>
+        <td><%=combo.card_spots.find_by(ord: 2).try(:card).try(:name) %></td>
+        <td><%=combo.card_spots.find_by(ord: 3).try(:card).try(:name) %></td>
+        <td><%=combo.card_spots.find_by(ord: 4).try(:card).try(:name) %></td>
+        <td><%=combo.card_spots.find_by(ord: 5).try(:card).try(:name) %></td>
         <td><%= link_to 'Show', combo %></td>
         <td><%= link_to 'Edit', edit_combo_path(combo) %></td>
         <td><%= link_to 'Destroy', combo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
