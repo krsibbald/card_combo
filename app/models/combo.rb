@@ -3,7 +3,7 @@ class Combo < ApplicationRecord
   has_many :cards, through: :card_spots
 
   def self.export_as_hash
-        ans = {}
+    ans = {}
     Combo.all.each do |combo|
       card_ids = combo.card_spots.order(:ord).map(&:card).map(&:game_id)
       len = card_ids.length

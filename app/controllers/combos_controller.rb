@@ -87,7 +87,7 @@ class CombosController < ApplicationController
   end
 
   def export
-    @export_text = Combo.export_as_hash
+    @export_text = Combo.export_as_hash.to_s.gsub('=>', ': ')
   end
 
   private

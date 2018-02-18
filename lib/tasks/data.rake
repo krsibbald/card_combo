@@ -441,17 +441,20 @@ namespace :data do
   task :import_combos => :environment do
     #var CARDCOMBOS = {
     #0 is last item in hand
-    combos_string = "{
-      1: { 3: { 0: true, 3: { 1: { 0: true } } } },
-      2: { 3: { 0: true } },
-      3: { 1: { 0: true, 3: { 1: { 0: true } } },
-           2: { 0: true } }
+    # combos_string = "{
+    #   1: { 3: { 0: true, 3: { 1: { 0: true } } } },
+    #   2: { 3: { 0: true } },
+    #   3: { 1: { 0: true, 3: { 1: { 0: true } } },
+    #        2: { 0: true } }
+    # }"
+    combos_string ="{
+    {1: {3: {0: true, 3: {1: {0: true}}}, 8: {0: true}, 13: {0: true}, 14: {0: true}, 18: {0: true}}, 4: {8: {0: true}, 19: {0: true}, 20: {0: true}, 21: {0: true}, 6: {0: true}, 7: {0: true}, 15: {0: true}}, 17: {13: {0: true}, 3: {0: true}, 6: {0: true}, 21: {0: true}, 14: {0: true}, 12: {0: true}, 19: {0: true}, 16: {0: true}, 18: {0: true}, 20: {0: true}, 25: {0: true}}, 2: {3: {0: true}, 8: {0: true}, 12: {0: true}}, 3: {1: {0: true, 3: {1: {0: true}}}, 2: {0: true}, 5: {0: true}, 14: {0: true}, 15: {0: true}, 17: {0: true}, 18: {0: true}, 22: {0: true}, 23: {0: true}}, 9: {14: {0: true}, 15: {0: true}, 18: {0: true}, 3: {0: true}}, 14: {9: {0: true}, 10: {0: true}, 12: {0: true}, 17: {0: true}, 20: {0: true}, 22: {0: true}, 23: {0: true}, 1: {0: true}, 5: {0: true}}, 5: {3: {0: true}, 6: {0: true}, 8: {0: true}, 12: {0: true}, 13: {0: true}, 14: {0: true}, 16: {0: true}, 15: {0: true}, 18: {0: true}, 19: {0: true}, 20: {0: true}, 21: {0: true}, 25: {0: true}}, 15: {5: {0: true}, 17: {0: true}, 24: {0: true}, 3: {0: true}, 9: {0: true}, 10: {0: true}, 11: {0: true}, 12: {0: true}, 4: {0: true}}, 10: {14: {0: true}, 15: {0: true}, 20: {0: true}, 18: {0: true}}, 6: {4: {0: true}, 5: {0: true}, 17: {0: true}, 24: {0: true}}, 11: {15: {0: true}}, 7: {4: {0: true}}, 12: {2: {0: true}, 5: {0: true}, 14: {0: true}, 15: {0: true}, 17: {0: true}, 18: {0: true}, 22: {0: true}, 23: {0: true}}, 8: {1: {0: true}, 2: {0: true}, 4: {0: true}, 5: {0: true}, 17: {0: true}, 23: {0: true}}, 13: {1: {0: true}, 5: {0: true}, 17: {0: true}, 23: {0: true}}, 16: {5: {0: true}, 17: {0: true}, 15: {0: true}, 18: {0: true}, 20: {0: true}, 22: {0: true}}, 18: {1: {0: true}, 5: {0: true}, 10: {0: true}, 12: {0: true}, 17: {0: true}, 20: {0: true}, 22: {0: true}, 23: {0: true}}, 19: {4: {0: true}, 5: {0: true}, 15: {0: true}, 19: {0: true}, 20: {0: true}, 21: {0: true}, 24: {0: true}}, 24: {19: {0: true}, 20: {0: true}, 21: {0: true}, 6: {0: true}, 15: {0: true}}, 20: {4: {0: true}, 5: {0: true}, 10: {0: true}, 3: {0: true}, 13: {0: true}, 14: {0: true}, 16: {0: true}, 18: {0: true}, 19: {0: true}, 21: {0: true}, 24: {0: true}, 25: {0: true}}, 25: {1: {0: true}, 2: {0: true}, 5: {0: true}, 15: {0: true}, 17: {0: true}, 20: {0: true}, 22: {0: true}, 23: {0: true}}, 21: {4: {0: true}, 5: {0: true}, 15: {0: true}, 17: {0: true}, 19: {0: true}, 20: {0: true}, 21: {0: true}, 24: {0: true}}, 22: {3: {0: true}, 12: {0: true}, 14: {0: true}, 16: {0: true}, 25: {0: true}}, 23: {3: {0: true}, 8: {0: true}, 12: {0: true}, 13: {0: true}, 14: {0: true}, 18: {0: true}, 25: {0: true}}}
     }"
     Combo.import_from_cordova(combos_string)
   end
   desc 'export combos'
   task :export_combos => :environment do
-    puts Combo.export_as_hash.to_json
+    puts Combo.export_as_hash.to_s.gsub('=>', ': ')
   end
 
 end
